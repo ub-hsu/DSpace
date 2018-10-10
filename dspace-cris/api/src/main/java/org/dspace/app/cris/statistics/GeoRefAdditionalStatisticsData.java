@@ -126,9 +126,9 @@ public class GeoRefAdditionalStatisticsData implements
 
         try {
             InetAddress ipAddress = InetAddress.getByName(ip);
-            if(ipAddress.isSiteLocalAddress()) {  // UH omit unrouteable addresses
+            if(ipAddress.isSiteLocalAddress()) { // UH omit unrouteable addresses
             	log.debug("Skipping geolocation lookup for local address "+ip);
-            }else {
+            } else {
 		    CityResponse location = getLocationService().city(ipAddress);
 		    String countryCode = location.getCountry().getIsoCode();
 		    double latitude = location.getLocation().getLatitude();
