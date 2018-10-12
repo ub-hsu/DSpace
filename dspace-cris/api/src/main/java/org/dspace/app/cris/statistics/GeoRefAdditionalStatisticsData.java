@@ -129,42 +129,39 @@ public class GeoRefAdditionalStatisticsData implements
             if(ipAddress.isSiteLocalAddress()) { // omit unrouteable addresses
                 log.debug("Skipping geolocation lookup for local address "+ip);
             } else {
-		    CityResponse location = getLocationService().city(ipAddress);
-		    String countryCode = location.getCountry().getIsoCode();
-		    double latitude = location.getLocation().getLatitude();
-		    double longitude = location.getLocation().getLongitude();
-		    if (!(
-			    "--".equals(countryCode)
-			    && latitude == -180
-			    && longitude == -180)
-		    ) {
-			try {
-			    doc1.addField("continent", LocationUtils
-				.getContinentCode(countryCode));
-			} catch (Exception e) {
-			    System.out
-				.println("COUNTRY ERROR: " + countryCode);
-			}
+	        CityResponse location = getLocationService().city(ipAddress);
+	        String countryCode = location.getCountry().getIsoCode();
+	        double latitude = location.getLocation().getLatitude();
+	        double longitude = location.getLocation().getLongitude();
+	        if (!(
+		    "--".equals(countryCode)
+		    && latitude == -180
+		    && longitude == -180)
+		) {
+		    try {
+		        doc1.addField("continent", LocationUtils
+			.getContinentCode(countryCode));
+	            } catch (Exception e) {
+		        System.out
+			.println("COUNTRY ERROR: " + countryCode);
+	            }
 			doc1.addField("countryCode", countryCode);
 			doc1.addField("city", location.getCity().getName());
 			doc1.addField("latitude", latitude);
 			doc1.addField("longitude", longitude);
 			doc1.addField("location", latitude + ","
 				+ longitude);
-			if (countryCode != null)
-			{
+			if (countryCode != null) {
 			    String continentCode = getCountries2Continent()
 				    .getProperty(countryCode);
-			    if (continentCode == null)
-			    {
+			    if (continentCode == null) {
 				continentCode = getCountries2Continent().getProperty("default");
 			    }
-			    if (continentCode != null)
-			    {
+			    if (continentCode != null) {
 				doc1.addField("continent", continentCode);
+			    }
 			}
-		    }
-	        }
+	            }
             }
         } catch (IOException | GeoIp2Exception e) {
             log.error("Unable to get location of request:  {}", e);
@@ -186,7 +183,7 @@ public class GeoRefAdditionalStatisticsData implements
             DatabaseReader service = null;
             // Get the db file for the location
             String dbPath = ConfigurationManager.getProperty(
-                    SolrLoggerServiceImpl.CFG_USAGE_MODULE, "dbfile");
+                SolrLoggerServiceImpl.CFG_USAGE_MODULE, "dbfile");
             if (dbPath != null) {
                 try {
                     File dbFile = new File(dbPath);
