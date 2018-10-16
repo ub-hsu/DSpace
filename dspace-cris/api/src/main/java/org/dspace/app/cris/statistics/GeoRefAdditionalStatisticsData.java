@@ -9,8 +9,8 @@ package org.dspace.app.cris.statistics;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Properties;
 import java.net.InetAddress;
+import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 
