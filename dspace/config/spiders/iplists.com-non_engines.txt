@@ -259,7 +259,7 @@ tracerlock.com
 # UA "ozilla/4.7 (compatible; Whizbang)"
 # WhizBang is a company that sells a spider to build databases
 # name server timeout (2018-10)
-#pixnat06.whizbang.com
+# pixnat06.whizbang.com
 #63.173.190.16
 #pixnat09.whizbang.com
 #63.173.190.19
