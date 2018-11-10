@@ -29,7 +29,7 @@
 # Eidetica.com
 # UA "Mozilla/4.7 (compatible; http://eidetica.com/spider)"
 # Search engine hosting/spidering service
-# idle.eidetica.com # unresolvable (2018-10)
+# idle.eidetica.com. # unresolvable (2018-10)
 62.58.2.5
 
 # e-SocietyRobot
